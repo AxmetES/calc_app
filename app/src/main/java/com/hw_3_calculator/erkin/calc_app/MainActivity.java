@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,97 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_0 = (Button)findViewById(R.id.btn_0);
-        btn_1 = (Button)findViewById(R.id.btn_1);
-        btn_2 = (Button)findViewById(R.id.btn_2);
-        btn_3 = (Button)findViewById(R.id.btn_3);
-        btn_4 = (Button)findViewById(R.id.btn_4);
-        btn_5 = (Button)findViewById(R.id.btn_5);
-        btn_6 = (Button)findViewById(R.id.btn_6);
-        btn_7 = (Button)findViewById(R.id.btn_7);
-        btn_8 = (Button)findViewById(R.id.btn_8);
-        btn_9 = (Button)findViewById(R.id.btn_9);
-        btn_dot =(Button)findViewById(R.id.btn_dot);
-        btn_eqal=(Button)findViewById(R.id.btn_eqal);
-        btn_dev=(Button)findViewById(R.id.btn_dev);
-        btn_multpl=(Button)findViewById(R.id.btn_multpl);
-        btn_minus=(Button)findViewById(R.id.btn_minus);
-        btn_plus=(Button)findViewById(R.id.btn_plus);
-        btn_clr=(ImageButton) findViewById(R.id.btn_clr);
-
-
-
-        btn_0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                if (!(s.isEmpty()))
-                txtNumber.setText(s+"0");
-            }
-        });
-        btn_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                txtNumber.setText(s+"1");
-            }
-        });
-        btn_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s=txtNumber.getText().toString();
-                txtNumber.setText(s+"2");
-            }
-        });
-        btn_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                txtNumber.setText(s+"3");
-            }
-        });
-        btn_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                txtNumber.setText(s+"4");
-            }
-        });
-        btn_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                txtNumber.setText(s+"5");
-            }
-        });
-        btn_6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                txtNumber.setText(s+"6");
-            }
-        });
-        btn_7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                txtNumber.setText(s+"7");
-            }
-        });
-        btn_8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                txtNumber.setText(s+"8");
-            }
-        });
-        btn_9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                txtNumber.setText(s+"9");
-            }
-        });
 
         btn_dot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +103,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @OnClick({R.id.btn_0,R.id.btn_1,R.id.btn_2,R.id.btn_3,R.id.btn_4,R.id.btn_5,R.id.btn_6,R.id.btn_7,R.id.btn_8,R.id.btn_9})
+    public void onButtonClick(Button v){
+        if (v.getId()==btn_0.getId())
+            txtNumber.append("0");
+        else if (v.getId()==btn_1.getId())
+            txtNumber.append("1");
+        else if(v.getId()==btn_2.getId())
+            txtNumber.append("2");
+        else if (v.getId()==btn_3.getId())
+            txtNumber.append("3");
+        else if (v.getId()==btn_4.getId())
+            txtNumber.append("4");
+        else if (v.getId()==btn_5.getId())
+            txtNumber.append("5");
+        else if (v.getId()==btn_6.getId())
+            txtNumber.append("6");
+        else if (v.getId()==btn_7.getId())
+            txtNumber.append("7");
+        else if (v.getId()==btn_8.getId())
+            txtNumber.append("8");
+        else if (v.getId()==btn_9.getId())
+            txtNumber.append("9");
+    }
+
+    @OnClick({R.id.btn_dot})
+    public void DotButtonClick(Button v){
+        if(v.getId()==btn_dot.getId()){
+            if(txtNumber.getText().toString().isEmpty())
+                txtNumber.append("0.");
+            else if((v.getText().toString().indexOf("."))<0)
+                txtNumber.append(".");
+        }
 
     }
+
 }
