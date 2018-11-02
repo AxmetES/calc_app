@@ -25,84 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        btn_dot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                int n = s.indexOf(".");
-                if(s.isEmpty())
-                    txtNumber.setText("0.");
-                else if(n<0)
-                    txtNumber.setText(s+".");
-            }
-        });
-        btn_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                a=Double.parseDouble(s);
-                choice=1;
-                txtNumber.setText("");
-            }
-        });
-        btn_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                a=Double.parseDouble(s);
-                choice=2;
-                txtNumber.setText("");
-            }
-        });
-        btn_multpl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                a=Double.parseDouble(s);
-                choice=3;
-                txtNumber.setText("");
-            }
-        });
-        btn_dev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                a=Double.parseDouble(s);
-                choice=4;
-                txtNumber.setText("");
-            }
-        });
-        btn_eqal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String s= txtNumber.getText().toString();
-                b=Double.parseDouble(s);
-                switch (choice)
-                {
-                    case 1:
-                        c=a+b;
-                        break;
-                    case 2:
-                        c=a-b;
-                        break;
-                    case 3:
-                        c=a*b;
-                        break;
-                    case 4:
-                        c=a/b;
-                        break;
-                }
-                txtNumber.setText("");
-            }
-        });
-        btn_clr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                txtNumber.setText("");
-            }
-        });
-
     }
 
     @OnClick({R.id.btn_0,R.id.btn_1,R.id.btn_2,R.id.btn_3,R.id.btn_4,R.id.btn_5,R.id.btn_6,R.id.btn_7,R.id.btn_8,R.id.btn_9})
@@ -137,7 +59,59 @@ public class MainActivity extends AppCompatActivity {
             else if((v.getText().toString().indexOf("."))<0)
                 txtNumber.append(".");
         }
-
     }
 
+    @OnClick({R.id.btn_clr})
+    public void ClearButtonClick(Button v){
+        if(v.getId()==btn_clr.getId())
+            txtNumber.setText("");
+    }
+
+    @OnClick({R.id.btn_plus,R.id.btn_multpl,R.id.btn_minus,R.id.btn_dev})
+    public void OperationButtonClick(Button v){
+        if (v.getId()==btn_plus.getId())
+        {
+            a=Double.parseDouble(v.getText().toString());
+            choice=1;
+            txtNumber.setText("");
+        } else if (v.getId()==btn_minus.getId())
+        {
+            a=Double.parseDouble(v.getText().toString());
+            choice=2;
+            txtNumber.setText("");
+        } else if (v.getId()==btn_multpl.getId())
+        {
+            a=Double.parseDouble(v.getText().toString());
+            choice=3;
+            txtNumber.setText("");
+        } else if (v.getId()==btn_dev.getId())
+        {
+            a=Double.parseDouble(v.getText().toString());
+            choice=4;
+            txtNumber.setText("");
+        }
+    }
+
+    @OnClick({R.id.btn_eqal})
+    public void eqalButtonClick(Button v){
+        if (v.getId()==btn_eqal.getId())
+        {
+            b=Double.parseDouble(txtNumber.getText().toString());
+            switch (choice)
+            {
+                case 1:
+                    c=a+b;
+                    break;
+                case 2:
+                    c=a-b;
+                case 3:
+                    c=a*b;
+                    break;
+                case 4:
+                    c=a/b;
+                    break;
+            }
+            txtNumber.setText(Double.toString(c));
+        }
+    }
 }
