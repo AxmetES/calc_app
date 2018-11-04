@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -14,19 +16,130 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity {
 
     Button btn_1,btn_2,btn_3,btn_4,btn_5,btn_6,btn_7,btn_8,btn_9,btn_0;
-    Button btn_minus,btn_plus,btn_dev, btn_dot, btn_eqal, btn_multpl;
+    Button btn_minus,btn_plus,btn_dev, btn_multpl, btn_eqal, btn_dot;
     ImageButton btn_clr;
-    EditText txtNumber;
-     int choice;
-     Double a,b,c;
+    TextView info,result;
 
+    final char ADDITION ='+';
+    final char SUBTRACTION ='-';
+    final char MULTIPLICATION ='*';
+    final char DIVISION ='/';
+
+    double val1 = Double.NaN;
+    double val2;
+
+    /*
+    int choice;
+     Double a,b,c;
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setupUIViews();
+
+        btn_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"0");
+            }
+        });
+
+        btn_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"1");
+            }
+        });
+
+        btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"2");
+            }
+        });
+
+        btn_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"3");
+            }
+        });
+
+        btn_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"4");
+            }
+        });
+
+        btn_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"5");
+            }
+        });
+
+        btn_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"6");
+            }
+        });
+
+        btn_7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"7");
+            }
+        });
+
+        btn_8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"8");
+            }
+        });
+
+        btn_9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                info.setText(info.getText().toString()+"9");
+            }
+        });
+
+
+
+    }
+    private void setupUIViews(){
+        btn_0 =(Button)findViewById(R.id.btn_0);
+        btn_1 =(Button)findViewById(R.id.btn_1);
+        btn_2 =(Button)findViewById(R.id.btn_2);
+        btn_3 =(Button)findViewById(R.id.btn_3);
+        btn_4 =(Button)findViewById(R.id.btn_4);
+        btn_5 =(Button)findViewById(R.id.btn_5);
+        btn_6 =(Button)findViewById(R.id.btn_6);
+        btn_7 =(Button)findViewById(R.id.btn_7);
+        btn_8 =(Button)findViewById(R.id.btn_8);
+        btn_9 =(Button)findViewById(R.id.btn_9);
+        btn_clr =(ImageButton) findViewById(R.id.btn_clr);
+        btn_minus =(Button)findViewById(R.id.btn_minus);
+        btn_plus =(Button)findViewById(R.id.btn_plus);
+        btn_dev =(Button)findViewById(R.id.btn_dev);
+        btn_multpl =(Button)findViewById(R.id.btn_multpl);
+        btn_eqal =(Button)findViewById(R.id.btn_eqal);
+        btn_dot =(Button)findViewById(R.id.btn_dot);
+        info = (TextView)findViewById(R.id.tvControl);
+        result = (TextView)findViewById(R.id.tvResult);
+
+
     }
 
+
+
+
+/*
     @OnClick({R.id.btn_0,R.id.btn_1,R.id.btn_2,R.id.btn_3,R.id.btn_4,R.id.btn_5,R.id.btn_6,R.id.btn_7,R.id.btn_8,R.id.btn_9})
     public void onButtonClick(Button v){
         if (v.getId()==btn_0.getId())
@@ -114,4 +227,5 @@ public class MainActivity extends AppCompatActivity {
             txtNumber.setText(Double.toString(c));
         }
     }
+    */
 }
