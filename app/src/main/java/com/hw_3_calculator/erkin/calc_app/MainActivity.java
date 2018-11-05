@@ -24,9 +24,13 @@ public class MainActivity extends AppCompatActivity {
     final char SUBTRACTION ='-';
     final char MULTIPLICATION ='*';
     final char DIVISION ='/';
+    final char EQUAL =0;
 
     double val1 = Double.NaN;
     double val2;
+
+    char ACTION;
+
 
     /*
     int choice;
@@ -109,6 +113,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn_plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculate();
+                ACTION = ADDITION;
+                result.setText(String.valueOf(val1)+"+");
+                info.setText(null);
+            }
+        });
+
+        btn_minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculate();
+                ACTION = ADDITION;
+                result.setText(String.valueOf(val1)+"-");
+                info.setText(null);
+            }
+        });
+
+        btn_multpl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculate();
+                ACTION = ADDITION;
+                result.setText(String.valueOf(val1)+"*");
+                info.setText(null);
+            }
+        });
+
+        btn_dev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculate();
+                ACTION = ADDITION;
+                result.setText(String.valueOf(val1)+"/");
+                info.setText(null);
+            }
+        });
+
+
+
 
 
     }
@@ -132,9 +178,40 @@ public class MainActivity extends AppCompatActivity {
         btn_dot =(Button)findViewById(R.id.btn_dot);
         info = (TextView)findViewById(R.id.tvControl);
         result = (TextView)findViewById(R.id.tvResult);
-
-
     }
+
+    private void calculate(){
+        if (!Double.isNaN(val1)){
+            val2=Double.parseDouble(info.getText().toString());
+
+            switch (ACTION){
+                case ADDITION:
+                    val1 = val1+val2;
+                    break;
+
+                case SUBTRACTION:
+                    val1 = val1-val2;
+                    break;
+
+                case MULTIPLICATION:
+                    val1 = val1*val2;
+                    break;
+
+                case DIVISION:
+                    val1 = val1/val2;
+                    break;
+
+                case EQUAL:
+                    break;
+
+            }
+        }
+        else {
+            val1=Double.parseDouble(info.getText().toString());
+
+        }
+    }
+
 
 
 
