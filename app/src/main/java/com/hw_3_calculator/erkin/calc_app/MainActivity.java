@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculate();
-                ACTION = ADDITION;
+                ACTION = SUBTRACTION;
                 result.setText(String.valueOf(val1)+"-");
                 info.setText(null);
             }
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculate();
-                ACTION = ADDITION;
+                ACTION = MULTIPLICATION;
                 result.setText(String.valueOf(val1)+"*");
                 info.setText(null);
             }
@@ -147,9 +147,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calculate();
-                ACTION = ADDITION;
+                ACTION = DIVISION;
                 result.setText(String.valueOf(val1)+"/");
                 info.setText(null);
+            }
+        });
+        btn_eqal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculate();
+                ACTION = EQUAL;
+                result.setText(result.getText().toString() + String.valueOf(val2) + "=" + String.valueOf(val1));
+                info.setText(null);
+
+
+            }
+        });
+        btn_clr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (info.getText().length() > 0){
+                    CharSequence nam = info.getText().toString();
+                    info.setText(nam.subSequence(0, nam.length()-1));
+                }
+                else {
+                    val1 = Double.NaN;
+                    val2 = Double.NaN;
+                    info.setText(null);
+                    result.setText(null);
+                }
             }
         });
 
