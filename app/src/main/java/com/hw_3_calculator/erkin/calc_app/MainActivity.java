@@ -141,10 +141,15 @@ public class MainActivity extends AppCompatActivity {
         btn_dev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculate();
-                ACTION = DIVISION;
-                result.setText(String.valueOf(val1)+"/");
-                info.setText(null);
+                if(info.getText()==null){
+                    return;
+                }else {
+                    calculate();
+                    ACTION = DIVISION;
+                    result.setText(String.valueOf(val1)+"/");
+                    info.setText(null);
+                }
+
             }
         });
         btn_eqal.setOnClickListener(new View.OnClickListener() {
