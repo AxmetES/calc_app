@@ -4,13 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -198,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         btn_clr =(ImageButton) findViewById(R.id.btn_clr);
         btn_minus =(Button)findViewById(R.id.btn_minus);
         btn_plus =(Button)findViewById(R.id.btn_plus);
-        btn_dev =(Button)findViewById(R.id.btn_dev);
+        btn_dev =(Button)findViewById(R.id.btn_div);
         btn_multpl =(Button)findViewById(R.id.btn_multpl);
         btn_eqal =(Button)findViewById(R.id.btn_eqal);
         btn_dot =(Button)findViewById(R.id.btn_dot);
