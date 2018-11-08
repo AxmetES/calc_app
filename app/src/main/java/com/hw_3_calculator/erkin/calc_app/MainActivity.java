@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     final char MULTIPLICATION ='*';
     final char DIVISION ='/';
     final char EQUAL =0;
+    static double s;
+    static double b;
+    static double c;
+
 
     double val1 = Double.NaN;
     double val2;
@@ -143,7 +147,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(info.getText()==null){
                     return;
-                }else {
+                }else if (info.getText()!=null){
+                    s = Double.parseDouble(info.getText().toString());
+
+                }{
                     calculate();
                     ACTION = DIVISION;
                     result.setText(String.valueOf(val1)+"/");
