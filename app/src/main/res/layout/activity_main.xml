@@ -16,33 +16,30 @@
         <ImageButton
 
             android:id="@+id/btn_clr"
-            android:background="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:background="@color/white"
+            android:onClick="onClickClear"
             android:src="@mipmap/ic_clear"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvResult"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:id="@+id/display"
+            android:layout_width="297dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="bottom|right"
+            android:onClick="onClickNumber"
+            android:text="999"
+            android:textSize="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_clr"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/tvControl"
-            />
-
-        <TextView
-            android:id="@+id/tvControl"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvResult"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -54,36 +51,40 @@
         android:orientation="horizontal">
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_1"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickNumber"
             android:text="1" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_2"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickNumber"
             android:text="2" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_3"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="3"/>
+            android:onClick="onClickNumber"
+            android:text="3" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_minus"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="-"/>
+            android:onClick="onClickOperator"
+            android:text="-" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,35 +94,39 @@
         android:orientation="horizontal">
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_4"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickNumber"
             android:text="4" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_5"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickNumber"
             android:text="5" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_6"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickNumber"
             android:text="6" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_plus"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickOperator"
             android:text="+" />
     </LinearLayout>
     <LinearLayout
@@ -131,35 +136,39 @@
         android:orientation="horizontal">
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_7"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickNumber"
             android:text="7" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_8"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickNumber"
             android:text="8" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_9"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickNumber"
             android:text="9" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_div"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickOperator"
             android:text="/" />
     </LinearLayout>
     <LinearLayout
@@ -169,11 +178,12 @@
         android:orientation="horizontal">
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_0"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickNumber"
             android:text="0" />
 
         <Button
@@ -193,11 +203,12 @@
             android:text="=" />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_multpl"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickOperator"
             android:text="*" />
     </LinearLayout>
 
