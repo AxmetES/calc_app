@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.regex.Pattern;
+
 
 public class MainActivity extends AppCompatActivity {
     private TextView display;
@@ -51,7 +53,24 @@ public class MainActivity extends AppCompatActivity {
         updateDisplay();
     }
 
+    private double operate(String a, String b, String op){
+        switch (op){
+            case "+": return Double.valueOf(a) + Double.valueOf(b);
+            case "-": return Double.valueOf(a) - Double.valueOf(b);
+            case "*": return Double.valueOf(a) * Double.valueOf(b);
+            case "/": return Double.valueOf(a) / Double.valueOf(b);
+                default: return -1;
+
+        }
+    }
+
     public void onClickEqual(View v){
+        String[] operation = _info.split(Pattern.quote(currentOperator));
+        if(operation.length<2) return;
+
+        try{
+
+        }
 
     }
 }
