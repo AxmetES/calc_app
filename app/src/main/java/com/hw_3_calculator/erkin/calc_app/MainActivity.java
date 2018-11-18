@@ -2,6 +2,7 @@ package com.hw_3_calculator.erkin.calc_app;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView display;
     private String _info = "";
     private String currentOperator ="";
+    private String result = "";
 
 
     @Override
@@ -30,12 +32,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNumber(View v){
+        if (result != ""){
+            clear();
+            updateDisplay();
+        }
         Button b  = (Button) v;
         _info += b.getText();
         updateDisplay();
     }
 
     public void onClickOperator(View v){
+        if (result!=""){
+            _info = result;
+            result = "";
+        }
+
         Button b = (Button) v;
         _info += b.getText();
         currentOperator = b.getText().toString();
@@ -44,8 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void clear(){
-        _info="";
-        currentOperator="";
+        _info = "";
+        currentOperator = "";
+        result = "";
     }
 
     public void onClickClear(View v){
@@ -58,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
             case "+": return Double.valueOf(a) + Double.valueOf(b);
             case "-": return Double.valueOf(a) - Double.valueOf(b);
             case "*": return Double.valueOf(a) * Double.valueOf(b);
-            case "/": return Double.valueOf(a) / Double.valueOf(b);
+            case "/": try {
+                return Double.valueOf(a) / Double.valueOf(b);
+            }catch (Exception e){
+                Log.d("Calc",e.getMessage());
+            }
                 default: return -1;
 
         }
@@ -66,11 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickEqual(View v){
         String[] operation = _info.split(Pattern.quote(currentOperator));
-        if(operation.length<2) return;
+        if(operation.length < 2) return;
 
-        try{
-
-        }
+            result = String.valueOf(operate(operation[0],operation[1],currentOperator));
+            display.setText( String.valueOf(result));
 
     }
 }

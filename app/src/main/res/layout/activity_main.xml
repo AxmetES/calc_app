@@ -195,11 +195,12 @@
             android:text="." />
 
         <Button
-            style="@style/TextViewDisplay"
             android:id="@+id/btn_eqal"
+            style="@style/TextViewDisplay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="onClickEqual"
             android:text="=" />
 
         <Button
