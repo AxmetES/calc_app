@@ -40,17 +40,35 @@ public class MainActivity extends AppCompatActivity {
         _info += b.getText();
         updateDisplay();
     }
+    private boolean isOperator(char op){
+        switch (op){
+            case '+':
+            case '-':
+            case '*':
+            case '/': return true;
+             default: return false;
+        }
+    }
 
     public void onClickOperator(View v){
+        Button b = (Button) v;
+
         if (result!=""){
             _info = result;
             result = "";
         }
 
-        Button b = (Button) v;
-        _info += b.getText();
-        currentOperator = b.getText().toString();
-        updateDisplay();
+        if (currentOperator !=""){
+            if (isOperator(_info.charAt(_info.length()-1))){
+                _info.replace(_info.charAt(_info.length()-1),b.getText().charAt(0));
+            } else {
+                getResult();
+                _info = result;
+                result="";
+
+            }
+            currentOperator = b.getText().toString();
+        }
     }
 
 
@@ -80,11 +98,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onClickEqual(View v){
+    private boolean getResult(){
         String[] operation = _info.split(Pattern.quote(currentOperator));
-        if(operation.length < 2) return;
+        if(operation.length < 2) return false;
 
-            result = String.valueOf(operate(operation[0],operation[1],currentOperator));
+        result = String.valueOf(operate(operation[0],operation[1],currentOperator));
+        return true;
+
+    }
+
+    public void onClickEqual(View v){
+        getResult();
             display.setText( String.valueOf(result));
 
     }
