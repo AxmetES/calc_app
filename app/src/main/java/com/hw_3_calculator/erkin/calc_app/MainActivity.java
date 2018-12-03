@@ -51,16 +51,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickOperator(View v){
+        if (_info =="") return;
         Button b = (Button) v;
 
         if (result!=""){
-            _info = result;
-            result = "";
+            String _infoStr = result;
+            clear();
+            _info = _infoStr;
         }
 
         if (currentOperator !=""){
             if (isOperator(_info.charAt(_info.length()-1))){
-                _info.replace(_info.charAt(_info.length()-1),b.getText().charAt(0));
+                _info=_info.replace(_info.charAt(_info.length()-1),b.getText().charAt(0));
+                updateDisplay();
+                return;
             } else {
                 getResult();
                 _info = result;
@@ -69,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
             }
             currentOperator = b.getText().toString();
         }
+
+        _info += b.getText();
+        currentOperator = b.getText().toString();
+        updateDisplay();
     }
 
 
@@ -108,8 +116,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickEqual(View v){
-        getResult();
-            display.setText( String.valueOf(result));
+        if(_info =="") return;
+        if (!getResult()) return;
+
+        display.setText(_info +"\n" + String.valueOf(result));
 
     }
 }
